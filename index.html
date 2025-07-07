@@ -1,0 +1,238 @@
+<!-- Combined index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <audio id="birthday-audio" src="happy-birthday-334876.mp3" loop preload="auto"></audio>
+
+  <div id="image-modal" class="modal" style="display:none;">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modal-img">
+</div>
+
+ <div id="page1" class="container page center-page">
+  <div class="white-box">
+    <h1 class="typewriter">Happy Birthday My Love! 💖</h1>
+    <p class="subtitle">To the most amazing woman in my life</p>
+    <p class="quote">“Every moment with you is a gift, and today we celebrate the greatest gift of all – YOU!”</p>
+   <button onclick="startExperience()" class="btn">Begin Your Surprise 🎁</button>
+
+  </div>
+  
+</div>
+
+
+
+ <div id="page2" class="card page center-page" style="display: none;">
+  <div class="white-box">
+    <h2>Dear Madam Ji,</h2>
+    <p>On this special day, I want to take a moment to celebrate not just your birthday, but the incredible person you are.
+      Your presence lights up every room you enter, just like how you've lit up our lives.</p>
+    <p>Your kindness, wisdom, and beautiful spirit inspire everyone around you.
+      You have this magical way of making ordinary moments feel extraordinary,
+      and today is all about celebrating the magic that is uniquely you.</p>
+    <p>May this new year of your life be filled with endless joy, beautiful surprises,
+      and all the happiness your heart can hold. You deserve nothing but the very best that life has to offer.</p>
+    <p class="signature">Wishing you the most wonderful birthday! 🎂✨</p>
+    <button onclick="showPage('page3')" class="btn">Continue to Next Page →</button>
+  </div>
+</div>
+
+
+  <div id="page3" class="memories-container page" style="display: none;">
+  <h2>Mirror of Memories 💞</h2>
+  
+  <!-- Locked state -->
+  <div id="memory-lock" class="memory-lock">
+    <div class="lock-content">
+      <span class="hearts">💖💖</span>
+      <p>Click to unlock memories</p>
+    </div>
+  </div>
+
+  <!-- Actual gallery hidden initially -->
+  <div id="memory-gallery" class="gallery" style="display: none;">
+    <div class="memory-card">
+      <img src="photo1.jpeg" alt="Memory 1" class="memory-image">
+      <p>This smile... my forever favorite</p>
+      <a href="photo1.jpeg" download class="download-btn">Download this memory</a>
+    </div>
+    <div class="memory-card">
+      <img src="photo2.jpeg" alt="Memory 2" class="memory-image">
+      <p>Our beautiful moment</p>
+      <a href="photo2.jpeg" download class="download-btn">Download this memory</a>
+    </div>
+    <div class="memory-card">
+      <img src="photo3.jpeg" alt="Memory 2" class="memory-image">
+      <p>One photo. A thousand emotions</p>
+      <a href="photo3.jpeg" download class="download-btn">Download this memory</a>
+    </div>
+    <div class="memory-card">
+      <img src="photo4.jpeg" alt="Memory 2" class="memory-image">
+      <p>This moment? Pure magic.</p>
+      <a href="photo4.jpeg" download class="download-btn">Download this memory</a>
+    </div>
+    <div class="memory-card">
+      <img src="photo5.jpeg" alt="Memory 2" class="memory-image">
+      <p>You glow differently when you're happy — and I love capturing it</p>
+      <a href="photo5.jpeg" download class="download-btn">Download this memory</a>
+    </div>
+  </div>
+
+  <button onclick="showPage('page4')" class="btn" id="next-btn" style="display: none;">Next Surprise 🎉</button>
+</div>
+
+<div id="cake-page" class="container page center-page" style="display: none;">
+  <div class="cake-container">
+    <img src="cake.png" id="cake-img" alt="Birthday Cake">
+    <img src="candle-flame.png" id="flame" alt="Candle Flame" onclick="blowCandle()">
+  </div>
+  <div id="balloon-container"></div>
+</div>
+
+
+
+ <div id="page4" class="container page center-page" style="display: none;">
+  <div class="white-box">
+    <h1>💝 You Are Truly Special 💝</h1>
+    <p class="quote">Every moment with you is a chapter of love, laughter, and unforgettable memories. Thank you for being you. ✨</p>
+    <p class="final-message">This is just a small gesture to make your day as special as you are. I hope it brought a smile to your face just like you always bring to mine.</p>
+    <p class="ending">Happy Birthday once again, my forever favorite. 🎂💫</p>
+  </div>
+  <canvas id="confetti-canvas"></canvas>
+</div>
+
+  <script>
+    function showPage(id) {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(p => p.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+
+  if (id === 'page1') {
+    playBirthdaySong();
+  }
+
+  if (id === 'page4') {
+    launchConfetti();
+  }
+}
+
+
+    function launchConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const confetti = [];
+      for (let i = 0; i < 100; i++) {
+        confetti.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          size: Math.random() * 8 + 2,
+          speed: Math.random() * 3 + 2,
+          color: `hsl(${Math.random() * 360}, 100%, 70%)`
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (const c of confetti) {
+          ctx.fillStyle = c.color;
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, c.size, 0, 2 * Math.PI);
+          ctx.fill();
+        }
+      }
+
+      function update() {
+        for (const c of confetti) {
+          c.y += c.speed;
+          if (c.y > canvas.height) {
+            c.y = -c.size;
+            c.x = Math.random() * canvas.width;
+          }
+        }
+      }
+
+      function animate() {
+        draw();
+        update();
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+    document.getElementById('memory-lock').addEventListener('click', function() {
+  document.getElementById('memory-lock').style.display = 'none';
+  document.getElementById('memory-gallery').style.display = 'block';
+  document.getElementById('next-btn').style.display = 'inline-block';
+});
+// Modal functionality
+const modal = document.getElementById('image-modal');
+const modalImg = document.getElementById('modal-img');
+const closeBtn = document.getElementsByClassName('close')[0];
+
+document.querySelectorAll('.memory-image').forEach(img => {
+  img.addEventListener('click', function(){
+    modal.style.display = 'block';
+    modalImg.src = this.src;
+  });
+});
+
+closeBtn.onclick = function() { 
+  modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+}
+function blowCandle() {
+  const flame = document.getElementById('flame');
+  flame.style.display = 'none'; // hide flame (blow out)
+
+  launchBalloons(); // trigger balloon animation
+}
+
+function launchBalloons() {
+  const container = document.getElementById('balloon-container');
+
+  for (let i = 0; i < 20; i++) {
+    const balloon = document.createElement('div');
+    balloon.classList.add('balloon');
+    balloon.style.left = Math.random() * 100 + 'vw';
+    container.appendChild(balloon);
+
+    // Animate
+    setTimeout(() => {
+      balloon.remove();
+    }, 5000);
+  }
+}
+function playBirthdaySong() {
+  const audio = document.getElementById('birthday-audio');
+  audio.play().catch((e) => {
+    console.log("Playback prevented. User interaction required.");
+  });
+}
+function startExperience() {
+  playBirthdaySong();     // ✅ Start the music after user clicks
+  showPage('page2');      // ✅ Then go to next page
+}
+
+
+
+  </script>
+
+
+</body>
+</html>
