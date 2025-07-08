@@ -1,0 +1,414 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  overflow-y: auto;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, rgb(222, 138, 166), lavender);
+  overflow-x: hidden;
+}
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5em;
+  color: #d63384; /* or any pinkish tone you prefer */
+}
+
+.subtitle, .quote {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2em;
+}
+ .white-box {
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.center-page .white-box {
+  margin: 0 auto; /* horizontally center it */
+}
+
+.btn {
+  padding: 12px 24px;
+  font-size: 1em;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #ff4ec7, #ff6ec4);
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 8px 15px rgba(255, 110, 196, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #ff6ec4, #ff4ec7);
+  box-shadow: 0 12px 20px rgba(255, 110, 196, 0.5);
+  transform: translateY(-3px);
+}
+h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2em;
+  color: #d63384;
+}
+
+
+
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 100vh;
+}
+
+.screen h1, .screen h2 {
+  color: #d63384;
+}
+
+.screen p {
+  font-size: 1.2em;
+  max-width: 600px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 1em;
+  border: none;
+  border-radius: 25px;
+  background-color: #f783ac;
+  color: white;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e75480;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.memory-box {
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.letter {
+  background: white;
+  padding: 25px;
+  max-width: 600px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* So user can still click buttons */
+  z-index: 0; /* Behind everything */
+}
+
+.page {
+  display: none;
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.download-btn {
+  background: linear-gradient(135deg, #ff4ec7, #ff6ec4);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(255, 110, 196, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.download-btn:hover {
+  background: linear-gradient(135deg, #ff6ec4, #ff4ec7);
+  box-shadow: 0 12px 20px rgba(255, 110, 196, 0.5);
+  transform: translateY(-3px);
+}
+
+.memory-image {
+  width: 80%;
+  max-width: 600px;
+  max-height: 80vh; 
+  object-fit: contain;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+  margin-bottom: 50px;
+  transition: transform 0.3s ease;
+}
+
+
+
+.memory-image:hover {
+  transform: scale(1.03);
+}
+.center-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.memory-card {
+  text-align: center; /* ensures text within each card is centred */
+  margin-bottom: 30px; 
+  /* optional: spacing between cards */
+  color: white;
+}
+.memories-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: white;
+}
+.memory-lock {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 300px;
+  margin: 40px auto;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.memory-lock:hover {
+  transform: scale(1.05);
+}
+
+.hearts {
+  font-size: 2em;
+  display: block;
+  animation: heartBeat 1s infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+.lock-content p {
+  margin-top: 10px;
+  font-size: 1.1em;
+  color: #d63384;
+}
+#page4 h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2em;
+  color: #d63384;
+}
+
+#page4 p {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin: 10px 0;
+}
+.gallery .memory-card p {
+  font-size: 1.2em;
+  color: #d63384;
+  font-style: italic;
+  text-align: center;
+  margin-top: 10px;
+}
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000; 
+  padding-top: 60px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cake-container {
+  position: relative;
+  display: inline-block;
+}
+
+#cake-img {
+  width: 300px; /* adjust size as needed */
+}
+
+#flame {
+  position: absolute;
+  top: 20px; /* adjust based on cake image */
+  left: 140px; /* adjust based on cake image */
+  width: 30px;
+  cursor: pointer;
+}
+
+#balloon-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+}
+.balloon {
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  height: 50px;
+  background-color: hsl( var(--hue), 70%, 60%);
+  border-radius: 15px 15px 0 0;
+  animation: float 5s linear forwards;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 2px;
+  height: 10px;
+  background: black;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+} 
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 3px solid #fff;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
+  font-size: 2rem;
+  max-width: 100%;        /* ✅ allow responsiveness */
+}
+
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 28ch; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@media screen and (max-width: 600px) {
+  .typewriter {
+    font-size: 1.5rem;
+    animation: typing 3.5s steps(30, end), blink 0.75s step-end infinite;
+  }
+}
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.5s forwards;
+}
+
+.fade-in-up.delay-1 {
+  animation-delay: 2.5s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Fade In */
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Fade Out */
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
